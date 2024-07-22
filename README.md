@@ -1,8 +1,11 @@
-# obituary
-![Home page](C:\xampp\htdocs\o\obituary1.jpg)
+# Obituary
 
-![Database local host](C:\xampp\htdocs\o\obituary2.jpg)
+![Home page](https://github.com/Beverline-9296/obituary/blob/main/images/obituary1.jpg)
 
-![Submit form and example](C:\xampp\htdocs\o\obituary4.jpg)
+![Database local host](https://github.com/Beverline-9296/obituary/blob/main/images/obituary2.jpg)
 
-![View Result for the previous input](C:\xampp\htdocs\o\obituary5.jpg)
+![Submit form and example](https://github.com/Beverline-9296/obituary/blob/main/images/obituary4.jpg)
+
+![View Result for the previous input](https://github.com/Beverline-9296/obituary/blob/main/images/obituary5.jpg)
+
+![View Result for the previous input](https://github.com/Beverline-9296/obituary/blob/main/images/obituary6.jpg)
