@@ -19,3 +19,8 @@ on the local server the database was also sucessfully displayed
 
 ![View Result for the previous input](https://github.com/Beverline-9296/obituary/blob/main/images/obituary6.jpg)
 
+LANGUAGES I USED
+1. HTML
+2. Django framework
+
+   
