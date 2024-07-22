@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Project{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"></script>
+</head>
+<body>
+    <nav class="bg-gray-100" x-data="{ isOpen: false }">
+        <div class="container mx-auto px-4 py-2 flex items-center justify-between">
+            <a class="text-lg font-bold" href="#">Orbutuaries</a>
+            <button @click="isOpen = !isOpen" class="block lg:hidden px-2 py-1 border border-gray-400 rounded">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+            <div :class="{'hidden': !isOpen, 'block': isOpen}" class="w-full lg:flex lg:w-auto lg:block">
+                <ul class="flex flex-col lg:flex-row lg:ml-6">
+                    <li class="nav-item mx-3">
+                        <a class="nav-link text-gray-700 hover:text-gray-900" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link text-gray-700 hover:text-gray-900" href="{% url 'add_obituary' %}">Submit an Orbituary</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a class="nav-link text-gray-700 hover:text-gray-900" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    {% block content %}
+    {% endblock %}
+    <footer>
+        <div class="container mx-auto px-4 py-2 text-center bg-black-100 relative">
+            <p>&copy; 2024 Orbutuaries</p>
+        </div>
+    </footer>
+</body>
+</html>

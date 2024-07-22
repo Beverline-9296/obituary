@@ -1,0 +1,116 @@
+{% extends 'frontend/base.html' %}
+{% block title %}Add Obituary{% endblock %}
+{% block content %}
+<div class="flex justify-center w">
+    <form method="POST" action="{% url 'add_obituary' %}" id="obituaryForm" class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+        {% csrf_token %}
+        <div class="mb-4">
+            <label for="name" class="block text-gray-700">Name:</label>
+            <input type="text" name="name" id="name" value="{{ name }}" class="w-full px-3 py-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="date_of_birth" class="block text-gray-700">Date of Birth:</label>
+            <input type="date" name="date_of_birth" id="date_of_birth" value="{{ date_of_birth }}" class="w-full px-3 py-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="date_of_death" class="block text-gray-700">Date of Death:</label>
+            <input type="date" name="date_of_death" id="date_of_death" value="{{ date_of_death }}" class="w-full px-3 py-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="content" class="block text-gray-700">Content:</label>
+            <textarea name="content" id="content" class="w-full px-3 py-2 border rounded">{{ content }}</textarea>
+        </div>
+        <div class="mb-4">
+            <label for="author" class="block text-gray-700">Author:</label>
+            <input type="text" name="author" id="author" value="{{ author }}" class="w-full px-3 py-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="submission_date" class="block text-gray-700">Submission Date:</label>
+            <input type="date" name="submission_date" id="submission_date" value="{{ submission_date }}" class="w-full px-3 py-2 border rounded">
+        </div>
+        <div class="mb-4">
+            <label for="slug" class="block text-gray-700">Slug:</label>
+            <input type="text" name="slug" id="slug" value="{{ slug }}" class="w-full px-3 py-2 border rounded">
+        </div>
+        <button type="submit" class="w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('obituaryForm').addEventListener('submit', function(event) {
+        // Prevent form submission
+        event.preventDefault();
+
+        // Validate form fields
+        let name = document.getElementById('name').value.trim();
+        let dateOfBirth = document.getElementById('date_of_birth').value.trim();
+        let dateOfDeath = document.getElementById('date_of_death').value.trim();
+        let content = document.getElementById('content').value.trim();
+        let author = document.getElementById('author').value.trim();
+        let submissionDate = document.getElementById('submission_date').value.trim();
+        let slug = document.getElementById('slug').value.trim();
+
+        // Clear previous error messages
+        let errorElements = document.querySelectorAll('.error-message');
+        errorElements.forEach(function(element) {
+            element.remove();
+        });
+
+        // Check for empty fields and add error messages
+        if (!name || !dateOfBirth || !dateOfDeath || !content || !author || !submissionDate || !slug) {
+            if (!name) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Name is required.';
+                document.getElementById('name').after(error);
+            }
+            if (!dateOfBirth) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Date of Birth is required.';
+                document.getElementById('date_of_birth').after(error);
+            }
+            if (!dateOfDeath) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Date of Death is required.';
+                document.getElementById('date_of_death').after(error);
+            }
+            if (!content) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Content is required.';
+                document.getElementById('content').after(error);
+            }
+            if (!author) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Author is required.';
+                document.getElementById('author').after(error);
+            }
+            if (!submissionDate) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Submission Date is required.';
+                document.getElementById('submission_date').after(error);
+            }
+            if (!slug) {
+                let error = document.createElement('span');
+                error.classList.add('error-message');
+                error.style.color = 'red';
+                error.textContent = 'Slug is required.';
+                document.getElementById('slug').after(error);
+            }
+        } else {
+            // Submit the form if validation is successful
+            this.submit();
+        }
+    });
+</script>
+{% endblock %}
